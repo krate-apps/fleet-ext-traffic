@@ -1,0 +1,21 @@
+schema: 1
+id: org.fleet.traffic
+name: Traffic
+description: Track upload and download totals by day, month, year, and tracker.
+version: 1.0.1
+api: ">=1.0.0 <2.0.0"
+engines:
+  - rtorrent
+capabilities:
+  - torrents.read
+  - trackers.read
+  - storage.read
+  - storage.write
+  - jobs.schedule
+frontend:
+  type: declarative
+  entry: ui/extension.json
+backend:
+  type: process
+  executable: bin/traffic-worker
+  protocol: jsonrpc-2

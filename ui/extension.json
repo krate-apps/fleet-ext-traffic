@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "extensionId": "org.fleet.traffic",
+  "pages": [
+    {
+      "id": "stats",
+      "title": "Traffic",
+      "route": "/ext/org.fleet.traffic/stats"
+    }
+  ],
+  "actions": [
+    {
+      "id": "scan-now",
+      "label": "Collect now",
+      "target": "global",
+      "primary": true
+    },
+    {
+      "id": "show-day",
+      "label": "Show day (hours)",
+      "target": "global"
+    },
+    {
+      "id": "show-month",
+      "label": "Show month (days)",
+      "target": "global"
+    },
+    {
+      "id": "show-year",
+      "label": "Show year (months)",
+      "target": "global"
+    },
+    {
+      "id": "show-trackers",
+      "label": "Show per-tracker",
+      "target": "global"
+    },
+    {
+      "id": "export-json",
+      "label": "Export JSON",
+      "target": "global"
+    },
+    {
+      "id": "export-csv",
+      "label": "Export CSV",
+      "target": "global"
+    },
+    {
+      "id": "clear-stats",
+      "label": "Clear stats",
+      "target": "global",
+      "danger": true
+    }
+  ],
+  "panels": [
+    {
+      "id": "trafic-settings",
+      "title": "Traffic",
+      "placement": "settings"
+    }
+  ],
+  "forms": [
+    {
+      "id": "trafic-settings",
+      "title": "Traffic settings",
+      "loadMethod": "ext.traffic.getSettings",
+      "submitMethod": "ext.traffic.saveSettings",
+      "fields": [
+        {
+          "name": "enabled",
+          "label": "Enabled",
+          "kind": "boolean",
+          "help": "Collect deltas on an interval. Per-tracker hosts use trackers.list sampling (capped lookups per scan)."
+        },
+        {
+          "name": "intervalMin",
+          "label": "Collect interval (minutes)",
+          "kind": "number",
+          "required": true,
+          "help": "Allowed: 1,2,3,4,5,6,10,12,15,20,30,60"
+        }
+      ],
+      "description": "Track upload/download totals by day, month, and tracker."
+    }
+  ]
+}
